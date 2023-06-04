@@ -1,3 +1,4 @@
+import { Login } from "./Login";
 import { Signup } from "./Signup";
 
 export function Content() {
@@ -5,6 +6,7 @@ export function Content() {
     <div>
       <h1>Welcome to Web-ics!</h1>
       <Signup />
+      <Login />
     </div>
   );
 }
