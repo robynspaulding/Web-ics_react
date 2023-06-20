@@ -16,6 +16,13 @@ export function Content() {
     });
   };
 
+  const handleCreateComic = (params) => {
+    console.log("handleCreate", params);
+    axios.post("http://localhost:3000/comics.json", params).then((response) => {
+      setComics([...comics, response.data]);
+    });
+  };
+
   useEffect(handleIndexComics, []);
 
   return (
@@ -23,7 +30,7 @@ export function Content() {
       <h1>Welcome to Web-ics!</h1>
       <Signup />
       <Login />
-      <ComicsNew />
+      <ComicsNew onCreateComic={handleCreateComic} />
       <ComicsIndex comics={comics} />
     </div>
   );
