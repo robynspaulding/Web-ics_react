@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { ComicsIndex } from "./ComicsIndex";
+import { ComicsNew } from "./ComicsNew";
 import { Login } from "./Login";
 import { Signup } from "./Signup";
 
@@ -22,6 +23,7 @@ export function Content() {
       <h1>Welcome to Web-ics!</h1>
       <Signup />
       <Login />
+      <ComicsNew />
       <ComicsIndex comics={comics} />
     </div>
   );
