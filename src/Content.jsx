@@ -33,6 +33,23 @@ export function Content() {
     setCurrentComic(comic);
   };
 
+  const handleUpdateComic = (id, params, successCallback) => {
+    console.log("handleUpdateComic", params);
+    axios.patch(`http://localhost:3000/comics/${id}.json`, params).then((response) => {
+      setComics(
+        comics.map((comic) => {
+          if (comic.id === response.data.id) {
+            return response.data;
+          } else {
+            return comic;
+          }
+        })
+      );
+      successCallback();
+      handleClose();
+    });
+  };
+
   const handleClose = () => {
     console.log("handleClose");
     setIsComicShowVisible(false);
@@ -48,7 +65,7 @@ export function Content() {
       <ComicsNew onCreateComic={handleCreateComic} />
       <ComicsIndex comics={comics} onShowComic={handleShowComic} />
       <Modal show={isComicShowVisible} onClose={handleClose}>
-        <ComicsShow comic={currentComic} />
+        <ComicsShow comic={currentComic} onUpdateComic={handleUpdateComic} />
       </Modal>
     </div>
   );
