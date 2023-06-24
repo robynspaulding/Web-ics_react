@@ -7,6 +7,7 @@ export function ComicsIndex(props) {
         <div key={comic.id}>
           <h2>{comic.title}</h2>
           <img src={comic.image} width="500" height="300" />
+          <br />
           <button onClick={() => props.onShowComic(comic)}>More Info</button>
         </div>
       ))}
