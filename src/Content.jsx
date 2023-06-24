@@ -4,6 +4,7 @@ import { ComicsIndex } from "./ComicsIndex";
 import { ComicsNew } from "./ComicsNew";
 import { Login } from "./Login";
 import { Signup } from "./Signup";
+import { Modal } from "./Modal";
 
 export function Content() {
   const [comics, setComics] = useState([]);
@@ -32,6 +33,9 @@ export function Content() {
       <Login />
       <ComicsNew onCreateComic={handleCreateComic} />
       <ComicsIndex comics={comics} />
+      <Modal show={true}>
+        <h1>Test</h1>
+      </Modal>
     </div>
   );
 }
