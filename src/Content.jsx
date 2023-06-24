@@ -5,6 +5,7 @@ import { ComicsNew } from "./ComicsNew";
 import { Login } from "./Login";
 import { Signup } from "./Signup";
 import { Modal } from "./Modal";
+import { ComicsShow } from "./ComicsShow";
 
 export function Content() {
   const [comics, setComics] = useState([]);
@@ -47,7 +48,7 @@ export function Content() {
       <ComicsNew onCreateComic={handleCreateComic} />
       <ComicsIndex comics={comics} onShowComic={handleShowComic} />
       <Modal show={isComicShowVisible} onClose={handleClose}>
-        <h1>Test</h1>
+        <ComicsShow comic={currentComic} />
       </Modal>
     </div>
   );
