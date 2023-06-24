@@ -6,6 +6,10 @@ export function ComicsShow(props) {
     props.onUpdateComic(props.comic.id, params, () => event.target.reset());
   };
 
+  const handleClick = () => {
+    props.onDestroyComic(props.comic);
+  };
+
   return (
     <form onSubmit={handleSubmit}>
       <div>
@@ -17,7 +21,9 @@ export function ComicsShow(props) {
           Image URL: <input defaultValue={props.comic.image} name="image" />
         </div>
       </div>
-      <button type="submit">update</button>
+      <button type="submit">Update</button>
+      <br />
+      <button onClick={handleClick}>Delete</button>
     </form>
   );
 }

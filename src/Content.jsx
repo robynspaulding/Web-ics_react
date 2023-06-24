@@ -55,6 +55,14 @@ export function Content() {
     setIsComicShowVisible(false);
   };
 
+  const handleDestroyComic = (comic) => {
+    console.log("handleDestroyComic", comic);
+    axios.delete(`http://localhost:3000/comics/${comic.id}.json`).then((response) => {
+      setComics(comics.filter((c) => c.id !== comic.id));
+      handleClose();
+    });
+  };
+
   useEffect(handleIndexComics, []);
 
   return (
@@ -65,7 +73,7 @@ export function Content() {
       <ComicsNew onCreateComic={handleCreateComic} />
       <ComicsIndex comics={comics} onShowComic={handleShowComic} />
       <Modal show={isComicShowVisible} onClose={handleClose}>
-        <ComicsShow comic={currentComic} onUpdateComic={handleUpdateComic} />
+        <ComicsShow comic={currentComic} onUpdateComic={handleUpdateComic} onDestroyComic={handleDestroyComic} />
       </Modal>
     </div>
   );
