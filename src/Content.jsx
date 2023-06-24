@@ -8,6 +8,8 @@ import { Modal } from "./Modal";
 
 export function Content() {
   const [comics, setComics] = useState([]);
+  const [isComicShowVisible, setIsComicShowVisible] = useState(false);
+  const [currentComic, setCurrentComic] = useState({});
 
   const handleIndexComics = () => {
     console.log("handleIndexComics");
@@ -24,6 +26,17 @@ export function Content() {
     });
   };
 
+  const handleShowComic = (comic) => {
+    console.log("handleShowComic", comic);
+    setIsComicShowVisible(true);
+    setCurrentComic(comic);
+  };
+
+  const handleClose = () => {
+    console.log("handleClose");
+    setIsComicShowVisible(false);
+  };
+
   useEffect(handleIndexComics, []);
 
   return (
@@ -32,8 +45,8 @@ export function Content() {
       <Signup />
       <Login />
       <ComicsNew onCreateComic={handleCreateComic} />
-      <ComicsIndex comics={comics} />
-      <Modal show={true}>
+      <ComicsIndex comics={comics} onShowComic={handleShowComic} />
+      <Modal show={isComicShowVisible} onClose={handleClose}>
         <h1>Test</h1>
       </Modal>
     </div>
