@@ -57,7 +57,7 @@ export function Content() {
 
   const handleDestroyComic = (comic) => {
     console.log("handleDestroyComic", comic);
-    axios.delete(`http://localhost:3000/comics/${comic.id}.json`).then((response) => {
+    axios.delete(`http://localhost:3000/comics/${comic.id}.json`).then(() => {
       setComics(comics.filter((c) => c.id !== comic.id));
       handleClose();
     });
